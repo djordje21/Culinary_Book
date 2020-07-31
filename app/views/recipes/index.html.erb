@@ -3,10 +3,20 @@
 <% if @recipes.count == 0 %>
 <h1> Sorry, there are no recipes curently in this category.. </h1>
 <% else %>
-	<% @recipes.each do |recipe| %>
- 	<h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
 
-<% end %>
-<% end %>
+
+<div class="row">
+		<% @recipes.each do |recipe| %>
+		<div class="col-md-4">
+		<a href="/recipes/<%= recipe.id %>">
+			<%= image_tag recipe.recipe_img.url(:recipe_index), class: "recipe" %>
+		</a>
+		</div>
+
+	<% end %>
+
+	</div>
+
+ <% end %>
 
 

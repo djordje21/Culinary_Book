@@ -53,7 +53,7 @@ end
 
 private
 def recipe_params
-	params.require(:recipe).permit(:title, :preparation, :author, :category_id)
+	params.require(:recipe).permit(:title, :preparation, :author, :category_id, :recipe_img)
 end
 
 def find_book
