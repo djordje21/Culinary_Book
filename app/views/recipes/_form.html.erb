@@ -1,4 +1,5 @@
 <%= simple_form_for @recipe do |f| %>
+  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category") %>
   <%= f.input :title, label: "Recipe Title" %>
   <%= f.input :preparation %>
   <%= f.input :author %>

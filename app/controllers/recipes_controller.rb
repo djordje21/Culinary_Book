@@ -10,10 +10,12 @@ class RecipesController < ApplicationController
 
   def new
   	@recipe = current_user.recipes.build
+    @categories =Category.all.map{ |c| [c.name, c.id]}
   end
 
   def create
   	@recipe = current_user.recipes.build(recipe_params)
+    @recipe.category_id = params[:category_id]
 
   	if @recipe.save
   		redirect_to root_path
@@ -44,7 +46,7 @@ end
 
 private
 def recipe_params
-	params.require(:recipe).permit(:title, :preparation, :author)
+	params.require(:recipe).permit(:title, :preparation, :author, :category_id)
 end
 
 def find_book
