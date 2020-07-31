@@ -26,6 +26,18 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+
+        <<li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories: <span class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <% Category.all.each do |category| %>
+            <li class="<%= 'active' if params[:category] == category.name %>">
+              <%= link_to category.name, recipes_path(category: category.name), class: "link" %>
+            </li>
+          <% end %>
+        </div>
+      </li>
+   
         <% if user_signed_in? %>
           <li><%= link_to "Add Recipe", new_recipe_path %></li>  
         <% end %>
